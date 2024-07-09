@@ -6,6 +6,8 @@ import {
   ZodTypeProvider,
 } from "fastify-type-provider-zod";
 
+import cors from "@fastify/cors";
+
 import { createTrip } from "./routes/create-trip";
 
 export const app = fastify().withTypeProvider<ZodTypeProvider>();
@@ -14,6 +16,10 @@ app.setValidatorCompiler(validatorCompiler);
 app.setSerializerCompiler(serializerCompiler);
 
 app.register(createTrip);
+
+app.register(cors, {
+  origin: "*",
+});
 
 app
   .listen({
