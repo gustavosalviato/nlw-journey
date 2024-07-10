@@ -11,6 +11,8 @@ import cors from "@fastify/cors";
 import { createTrip } from "./routes/create-trip";
 import { confirmTrip } from "./routes/confirm-trip";
 import { confirmParticipants } from "./routes/confirm-participants";
+import { createActivity } from "./routes/create-activity";
+import { getActivities } from "./routes/get-activities";
 
 export const app = fastify().withTypeProvider<ZodTypeProvider>();
 
@@ -20,6 +22,8 @@ app.setSerializerCompiler(serializerCompiler);
 app.register(createTrip);
 app.register(confirmTrip);
 app.register(confirmParticipants);
+app.register(createActivity);
+app.register(getActivities);
 
 app.register(cors, {
   origin: "*",
