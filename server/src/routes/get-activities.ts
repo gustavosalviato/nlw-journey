@@ -16,7 +16,7 @@ export async function getActivities(app: FastifyInstance) {
         }),
       },
     },
-    async (request, reply) => {
+    async (request) => {
       const { tripId } = request.params;
 
       const trip = await prisma.trip.findUnique({
