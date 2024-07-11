@@ -17,6 +17,8 @@ import { createLink } from "./routes/create-link";
 import { getLinks } from "./routes/get-links";
 import { getParticipants } from "./routes/get-participants";
 import { getParticipant } from "./routes/get-participant";
+import { getTripDetails } from "./routes/get-trip-details";
+import { updateTrip } from "./routes/update-trip";
 
 export const app = fastify().withTypeProvider<ZodTypeProvider>();
 
@@ -32,6 +34,8 @@ app.register(createLink);
 app.register(getLinks);
 app.register(getParticipants);
 app.register(getParticipant);
+app.register(getTripDetails);
+app.register(updateTrip);
 
 app.register(cors, {
   origin: "*",
