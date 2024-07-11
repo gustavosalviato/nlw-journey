@@ -15,6 +15,8 @@ import { createActivity } from "./routes/create-activity";
 import { getActivities } from "./routes/get-activities";
 import { createLink } from "./routes/create-link";
 import { getLinks } from "./routes/get-links";
+import { getParticipants } from "./routes/get-participants";
+import { getParticipant } from "./routes/get-participant";
 
 export const app = fastify().withTypeProvider<ZodTypeProvider>();
 
@@ -28,6 +30,8 @@ app.register(createActivity);
 app.register(getActivities);
 app.register(createLink);
 app.register(getLinks);
+app.register(getParticipants);
+app.register(getParticipant);
 
 app.register(cors, {
   origin: "*",
