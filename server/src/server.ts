@@ -19,11 +19,15 @@ import { getParticipants } from "./routes/get-participants";
 import { getParticipant } from "./routes/get-participant";
 import { getTripDetails } from "./routes/get-trip-details";
 import { updateTrip } from "./routes/update-trip";
+import { createInvite } from "./routes/create-invite";
+import { errorHandler } from "./error-handler";
 
 export const app = fastify().withTypeProvider<ZodTypeProvider>();
 
 app.setValidatorCompiler(validatorCompiler);
 app.setSerializerCompiler(serializerCompiler);
+
+app.setErrorHandler(errorHandler);
 
 app.register(createTrip);
 app.register(confirmTrip);
@@ -36,6 +40,7 @@ app.register(getParticipants);
 app.register(getParticipant);
 app.register(getTripDetails);
 app.register(updateTrip);
+app.register(createInvite);
 
 app.register(cors, {
   origin: "*",
