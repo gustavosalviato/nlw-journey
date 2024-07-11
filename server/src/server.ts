@@ -21,6 +21,7 @@ import { getTripDetails } from "./routes/get-trip-details";
 import { updateTrip } from "./routes/update-trip";
 import { createInvite } from "./routes/create-invite";
 import { errorHandler } from "./error-handler";
+import { env } from "./env";
 
 export const app = fastify().withTypeProvider<ZodTypeProvider>();
 
@@ -46,8 +47,4 @@ app.register(cors, {
   origin: "*",
 });
 
-app
-  .listen({
-    port: 3333,
-  })
-  .then(() => console.log("http server running!"));
+app.listen({ port: env.PORT }).then(() => console.log("http server running!"));
